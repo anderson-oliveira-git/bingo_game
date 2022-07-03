@@ -13,7 +13,7 @@
     font-size: 3rem;
     font-family: 'poppins';
     background-color: tomato;
-    color: tomato;
+    color: white;
     border: none;
 }
 
@@ -39,7 +39,22 @@
 }
 
 .marcado {
-    background-color: green;
+    background-color: black;
     color: white;
 }
 
+.ponto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-size: 2rem;
+}
+
+.centro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tomato;
+    color: white;
+}
