@@ -1,4 +1,6 @@
 const cartela = document.querySelector('.container');
+const sortNumber = document.querySelector('.sortNumber');
+const quantSort = document.querySelector('.quantSort');
 
 let cartelaNumeros = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -34,6 +36,38 @@ while (escolhidos.length <= 24) {
     }
 }
 
-for (let i = 0; i <= escolhidos.length; i++) {
-    document.querySelector(`.n-${i+1}`).innerText = escolhidos[i];
-}
+escolhidos.forEach((numero, index) => {
+    if (index < 24) {
+        document.querySelector(`.n-${index}`).innerText = numero;
+    }
+});
+
+console.log(escolhidos);
+
+let quant = 0; // registra a quantidade de números que foram sorteador //
+let sorteados = []; // armazena todos os números sorteados //
+
+const intervalo = setInterval(() => {
+    const numero = parseInt(Math.random() * 98);
+
+    // se o número sorteado não existir no array sorteados //
+    // o número é adicionado nele e o contator é incrementado //
+    if (!sorteados.includes(numero)) {
+        sorteados.push(numero);
+        sortNumber.innerText = numero;  
+        quant++;
+        quantSort.innerText = quant;
+    } else {
+        console.log('Esse número já foi sorteado!')
+    }
+
+    if (quant === 24) {
+        clearInterval(intervalo);
+    }
+
+    if (escolhidos.includes(numero)) {
+        document.querySelector(`.n-${escolhidos.indexOf(numero)}`).classList.add('marcado');
+        console.log(`Valor: ${escolhidos[escolhidos.indexOf(numero)]} - Index: ${escolhidos.indexOf(numero)}`);
+     }
+
+}, 3000);
